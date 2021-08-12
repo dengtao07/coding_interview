@@ -1,0 +1,38 @@
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    'airbnb-base',
+  ],
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  rules: {
+    'no-console': 0,
+    'func-names': 0,
+    'no-extend-native': 0,
+    'no-plusplus': 0,
+    'symbol-description': 0,
+    'max-classes-per-file': 0,
+    'class-methods-use-this': 0,
+    'no-restricted-syntax': 0,
+    'prefer-destructuring': 0,
+    'no-prototype-builtins': 0,
+    'no-mixed-operators': 0,
+    'prefer-const': 0,
+    'no-param-reassign': 0,
+    'arrow-body-style': 0,
+    'no-useless-constructor': 0,
+    'consistent-return': 0,
+    'max-len': 0,
+    'prefer-arrow-callback': 0,
+    'no-loop-func': 0,
+    'no-unused-expressions': 0,
+    'no-shadow': 0,
+    'no-func-assign': 0,
+    'prefer-rest-params': 0,
+  },
+};
