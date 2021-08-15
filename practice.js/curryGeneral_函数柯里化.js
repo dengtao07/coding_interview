@@ -4,7 +4,7 @@
 // 2、每一次都将当前调用传入的参数记录下来，推入到参数列表中去
 // 3、最后使用函数的隐式转换，调用真正想要执行的函数
 
-/* 普通的curry函数 */
+/* 不定长的curry函数 */
 function add(...args) {
   return args.reduce((prev, cur) => prev + cur, 0);
 }
@@ -26,7 +26,7 @@ function curry(fn, ...args) {
 const curriedAddFn = curry(add);
 console.log(+curriedAddFn(1, 1)(2, 2)(3));
 
-/* 参数有长度的curry函数 */
+/* 定长的curry函数 */
 function curryWithLength(fn, ...args) {
   const argLength = fn.length;
   function curryFn(..._args) {

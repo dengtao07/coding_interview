@@ -13,6 +13,20 @@ function memorize(fn, getKey) {
   return memorizedFn;
 }
 
+// 直接内置生成key的函数
+function memorize1(fn) {
+  function memorizedFn(...args) {
+    const cache = memorizedFn.cache;
+    const key = JSON.stringify(args);
+    if (!cache[key]) {
+      cache[key] = fn(...args);
+    }
+    return cache[key];
+  }
+  memorizedFn.cache = {};
+  return memorizedFn;
+}
+
 function add(a, b) {
   console.log('执行了一次');
   return a + b;
