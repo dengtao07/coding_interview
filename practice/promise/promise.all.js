@@ -1,3 +1,6 @@
+// https://zhuanlan.zhihu.com/p/196671665
+// https://zhuanlan.zhihu.com/p/362648760
+
 // 输入不仅仅只有Array
 function promiseAll(args) {
   return new Promise((resolve, reject) => {
@@ -31,19 +34,17 @@ function promiseAll(args) {
   });
 }
 
-Promise.all = function (arrP) {
-  let list = [];
-  let len = 0;
-  let hasErr = false;
+Promise.allFn = function (arrP) {
+  let resultList = [];
+  let length = 0;
   return new Promise((resolve, reject) => {
     for (let i = 0; i < arrP.length; i++) {
-      arrP[i].then((data) => {
-        list[i] = data;
-        len++;
-        len === arrP.length && resolve(list);
-      }, (error) => {
-        !hasErr && reject(error);
-        hasErr = true;
+      Promise.resolve(arrP[i]).then((res) => {
+        resultList[i] = res;
+        length++;
+        length === arrP.length && resolve(resultList);
+      }).catch((err) => {
+        reject(err);
       });
     }
   });
@@ -51,8 +52,8 @@ Promise.all = function (arrP) {
 
 const p1 = Promise.resolve(1);
 const p2 = Promise.resolve(2);
-// const p3 = Promise.resolve(3);
-const p3 = Promise.reject(new Error(3));
+const p3 = Promise.resolve(3);
+// const p3 = Promise.reject(new Error(3));
 
-const result = Promise.all([p1, p2, p3]);
+const result = Promise.allFn([p1, p2, p3]);
 result.then((val) => { console.log(val); });
